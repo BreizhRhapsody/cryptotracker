@@ -75,7 +75,7 @@ class HomeController extends AbstractController
             $manager->persist($crypto);
             $manager->flush();
             $this->addFlash('success', "Cette transaction a été ajouté avec succès !");
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_home');
         } else {
             return $this->render('add/index.html.twig', [
                 'form' => $form->createView(),
@@ -93,7 +93,7 @@ class HomeController extends AbstractController
             $manager->flush();
             $this->addFlash('success', "Cette transaction a été supprimé avec succès");
         }
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('app_home');
     }
 }
 

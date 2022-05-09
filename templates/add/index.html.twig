@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AddController!{% endblock %}
+{% block title %}Ajouter une transaction{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container body">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/src/Controller/AddController.php'|file_link(0) }}">src/Controller/AddController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/templates/add/index.html.twig'|file_link(0) }}">templates/add/index.html.twig</a></code></li>
-    </ul>
+    <header>
+        <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-xs-1">
+                <h2 class="px-3">Ajouter une crypto</h2>
+            </div>
+            <div class="col link text-right pt-3">
+                <ul class="list-unstyled d-inline-flex align-items-center">
+                    <li><a href="{{ path('app_home') }}"><em class="fa fa-check-circle px-3"></em></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="add">
+        <div class="row m-3 p-3 d-flex">
+            <div class="col form-group text-center">
+                {{ form_start(form) }}
+
+                    {{ form_row(form.name) }}
+                    </br>
+                    {{ form_row(form.qte) }}
+                    </br>
+                    {{ form_row(form.value) }}
+                        </br>
+                    {{ form_row(form.editer, {'label': 'Ajouter'}) }}
+
+                    {{ form_rest(form) }}
+
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </main>
+
 </div>
+
 {% endblock %}

@@ -1,20 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Crypto Tracker{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container body"> 
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <header>
+        <div class="row d-flex justify-content-between align-items-center">
+            <div class="col">
+                <h1 class="px-3">Crypto Tracker</h1>
+            </div>
+            <div class="col link text-right pt-3">
+                <ul class="list-unstyled d-inline-flex align-items-center">
+                    <li><button class="btn btn-success"><em class="fa fa-hourglass-end" onClick="window.location.reload();"></em></button></li>
+                    <li><a href="{{ path('app_add') }}"><em class="fa fa-plus icon px-3 mx-3 "></em></a></li>
+                    <li><a href="{{ path('app_chart') }}"><em class="fa fa-chart-line icon pr-3"></em></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}   
+
+    <main class="container mt-3 p-3">
+        <div class="profit">
+            <h3 id="mydesc" class=" text-center mb-3"><a href="{{ path('app_chart') }}" style="text-decoration: none">
+            {% if userProfit > 0 %}
+                {{ userProfit }} €
+            {% elseif userProfit < 0 %}
+                {{ userProfit }}  €
+            {% endif %}
+            </a></h3>       
+        </div>
+
+        {% for crypto in cryptos %}
+        <table aria-describedby="mydesc" class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col"><img src="{{ asset('img/' ~ crypto.name ~ '.svg') }}" alt="crypto icon" class="icon pr-3">{{ crypto.name }}</th>
+                    <th class="text-right" scope="col">
+                    {% for cryptoName in result|keys %}    
+                    {% if cryptoName == crypto.name %}
+                        {% if result[cryptoName]['quote']['EUR']['price'] > crypto.value %}
+                            <em class="fa fa-long-arrow-alt-up px-3 mx-3 icon"></em>
+                        {% elseif result[cryptoName]['quote']['EUR']['price'] < crypto.value %}
+                            <em class="fa fa-long-arrow-alt-down px-3 mx-3 icon"></em>
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link"><em alt="Supprimer" class="fa fa-trash"></em></a></th>         
+                </tr>
+            </thead>
+            <tbody>
+        </table>
+        {% endfor %}
+    </main>
+
 </div>
+
 {% endblock %}

@@ -3,18 +3,30 @@
 {% block title %}Hello ChartController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container body">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/src/Controller/ChartController.php'|file_link(0) }}">src/Controller/ChartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/manon/Desktop/projects/cryptotracker/templates/chart/index.html.twig'|file_link(0) }}">templates/chart/index.html.twig</a></code></li>
-    </ul>
+    <header>
+        <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-xs-1">
+                <h2 class="px-3">Evolution des gains</h2>
+            </div>
+            <div class="col link text-right pt-3">
+                <ul class="list-unstyled d-inline-flex align-items-center">
+                    <li><a href="{{ path('app_home') }}"><em class="fa fa-check-circle icon px-3"></em></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="bg-black chart">
+            <div class="pt-5">
+                {{ render_chart(chart) }}
+            </div>
+        </div>
+    </main>
+   
 </div>
+
 {% endblock %}

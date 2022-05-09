@@ -1,1 +1,55 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Grotesk:wght@600&display=swap);
+/*BASE*/
+
+/*  Titre (bold)/ Autre (regular) : font-family: 'Roboto', sans-serif;
+    Logo : font-family: 'Space Grotesk', sans-serif;
+*/
+
+/*  black #100f0f
+    white #efefef
+    green #1fc36c
+*/
+
+/*RULES*/
+
+body {
+  background-color: #100f0f;
+  color: #efefef;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding: auto;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 750px) {
+  body {
+    box-shadow: 0 3px 6px rgba(239, 239, 239, 0.75);
+  }
+}
+
+header {
+    border-bottom: solid 1px #1fc36c;
+}
+
+h2, h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+}
+
+
+a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.icon {
+  height: 30px;
+}
+
+button {
+   background-color: #1fc36c;
+}
