@@ -17,12 +17,20 @@
             </div>
             <div class="col link text-right pt-3">
                 <ul class="list-unstyled d-inline-flex align-items-center">
+
+                    <!-- Button to refresh the page -->
+
                     <li><button class="btn btn-success mr-3"><em class="fa fa-hourglass-end" onClick="window.location.reload();"></em></button></li>
+
+                    <!-- Path to the page for add transaction -->
+
                     <li><a href="{{ path('app_add') }}"><em class="fa fa-plus mx-3 pl-3"></em></a></li>
                 </ul>
             </div>
         </div>
     </header>
+
+    <!-- Alert messages after adding/deleting a transaction -->
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -39,12 +47,16 @@
         </div>
     {% endfor %}  
 
+    <!-- Total profit and path to the acquired cryptocurrencies valuation chart -->
+
     <main class="container-profit">
         <div class="profit">
             <h3 id="mydesc"><a href="{{ path('app_chart') }}" style="text-decoration: none; color: white; font-family:'Space Grotesk', sans-serif">
                 {{ userProfit }} €
             </a></h3>       
         </div>
+
+        <!-- List of transactions and arrows that let you know if it's time to sell or not -->
 
         {% for crypto in cryptos %}
         <table aria-describedby="mydesc" class="table table-striped table-dark">
@@ -61,6 +73,8 @@
                         {% endif %}
                     {% endif %}
                     {% endfor %}
+
+        <!-- Icons to delete and have more information about the transaction with pop up to confirm -->            
 
                     <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('Cette transaction vous a coûté {{ crypto.total }}€ pour {{ crypto.qte }} crypto achetée\(s\) soit un coût unitaire de {{ crypto.value }}€')){return true;}else{event.stopPropagation(); event.preventDefault();};"><em alt="Supprimer" class="fa fa-info-circle ml-3"></em></a>
                     
