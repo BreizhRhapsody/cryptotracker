@@ -1,5 +1,22 @@
 #Projet Crypto Tracker
 
+Portfolio personnel pour gérer et suivre ses investiments en cryptomonnaie.
+
+## Environnement de développement
+
+### Pré-requis
+
+* PHP 8
+* Composer
+* Symfony CLI
+* Docker
+* Docker-compose
+
+
+
+
+## Personnel ##
+
 Besoin initial : pouvoir stocker les transactions de cryptomonnaies, savoir sur quels sites elles ont été réalisées, avoir son propre tracker/portfolio
 
 Les idées :
@@ -30,3 +47,12 @@ Attendus :
     * Choix techniques et contraintes
     * Organisation avec Magalie
     * Fonctionnalité manquante ?
+
+Ajout :
+-> refresh page 
+-> point infos
+
+Fonctionnalité manquante :
+-> Où a été acheté la cryptomonnaie ?
+-> Quand a t elle été acheté ?
+-> Account and login si l'application a vocation a touché plus de monde
