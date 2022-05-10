@@ -4,40 +4,50 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use App\Repository\SaveOfJourneyRepository;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
-use Symfony\Component\HttpFoundation\Response;
-use App\Entity\SaveOfJourney;
-use Doctrine\Persistence\ManagerRegistry;
+
 
 class ChartController extends AbstractController
 {
     #[Route('/chart', name: 'app_chart')]
 
-    public function index(ChartBuilderInterface $chartBuilder, ManagerRegistry $doctrine): Response
+    public function index(ChartBuilderInterface $chartBuilder, SaveOfJourneyRepository $repository): Response
     {
-        $repository = $doctrine->getRepository(SaveOfJourney::class);
-        $dailyProfits = $repository->findAll();
+        $saves = $repository->findAll();
+        
+        $ordinate = [];
+        $abscissa = [];
+        
 
-        $horizontal = [];
-        $vertical = [];
-        foreach ($dailyProfits as $dailyProfit) {
-            array_push($horizontal, $dailyProfit->getDate()->format('d/m/Y'));
-            array_push($vertical, $dailyProfit->getProfit());
+        foreach ($saves as $save) {
+            array_push($ordinate, $save->getDate()->format('d/m/Y'));
+            array_push($abscissa, $save->getProfit());
         }
+
 
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
         $chart->setData([
-            'labels' => $horizontal,
+
+            'labels' => $ordinate,
             'datasets' => [
-                'label' => 'Evolution',
-                'borderColor' => '#1fc36c',
-                'data' => $vertical,
+                [
+                    'label' => 'Evolution',
+                    'borderColor' => '#1fc36c',
+                    'data' => $abscissa,
+
+                ],
             ]
         ]);
 
+
+           
         return $this->render('chart/index.html.twig', [
-            'chart' => $chart,
+            'chart'=>$chart,
         ]);
+
+
     }
 }

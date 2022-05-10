@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ChartController!{% endblock %}
+{% block title %}Vos gains{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
+
+
 
 <div class="container body">
 
     <header>
         <div class="row d-flex justify-content-between align-items-center">
             <div class="col-xs-1">
-                <h2 class="px-3">Evolution des gains</h2>
+                <h2 class="px-3">Vos gains</h2>
             </div>
             <div class="col link text-right pt-3">
                 <ul class="list-unstyled d-inline-flex align-items-center">
@@ -20,13 +26,11 @@
     </header>
 
     <main>
-        <div class="bg-black chart">
-            <div class="pt-5">
-                {{ render_chart(chart) }}
-            </div>
-        </div>
+    {{ render_chart(chart, {'class': 'my-chart'}) }}
     </main>
-   
+
+
+
 </div>
 
 {% endblock %}

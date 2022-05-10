@@ -26,10 +26,19 @@ body {
 }
 
 @media screen and (min-width: 750px) {
+  
   body {
-    box-shadow: 0 3px 6px rgba(239, 239, 239, 0.75);
+    background-color:rgb(27, 88, 56);
   }
+  
+  .body {
+    box-shadow: 0 3px 6px rgba(31, 195, 108, 0.75);
+  }
+
 }
+
+  
+
 
 header {
     border-bottom: solid 1px #1fc36c;

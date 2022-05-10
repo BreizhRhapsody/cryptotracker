@@ -2,6 +2,10 @@
 
 {% block title %}Crypto Tracker{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
 
 <div class="container body"> 
@@ -15,7 +19,6 @@
                 <ul class="list-unstyled d-inline-flex align-items-center">
                     <li><button class="btn btn-success"><em class="fa fa-hourglass-end" onClick="window.location.reload();"></em></button></li>
                     <li><a href="{{ path('app_add') }}"><em class="fa fa-plus icon px-3 mx-3 "></em></a></li>
-                    <li><a href="{{ path('app_chart') }}"><em class="fa fa-chart-line icon pr-3"></em></a></li>
                 </ul>
             </div>
         </div>
@@ -30,13 +33,19 @@
         </div>
     {% endfor %}   
 
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-success fade show mt-3 text-center" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}  
+
     <main class="container mt-3 p-3">
         <div class="profit">
             <h3 id="mydesc" class=" text-center mb-3"><a href="{{ path('app_chart') }}" style="text-decoration: none">
             {% if userProfit > 0 %}
                 {{ userProfit }} €
             {% elseif userProfit < 0 %}
-                {{ userProfit }}  €
+                {{ userProfit }} €
             {% endif %}
             </a></h3>       
         </div>

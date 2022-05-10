@@ -27,8 +27,9 @@ class HomeController extends AbstractController
         foreach ($cryptos as $cryptoName) {
             array_push($cryptoNameArray, $cryptoName->getName());
         }
-        $stringCrypto = implode(',', $cryptoNameArray);
-        $result = $callApiService->getApi($stringCrypto);
+
+        $string = implode(',', $cryptoNameArray);
+        $result = $callApiService->getApi($string);
 
         $actualValue = [];
         $cryptoValue = [];
@@ -47,6 +48,10 @@ class HomeController extends AbstractController
             $save->setProfit(round($userProfit));
             $manager->persist($save);
             $manager->flush();
+        }
+
+        if ($cryptos == null) {
+            $this->addFlash('error', "Mince... Votre portfolio est vide. Pas de panique ! Ajoutez dès à présent votre première transaction en cliquant sur '+'");
         }
 
         return $this->render('home/index.html.twig', [
