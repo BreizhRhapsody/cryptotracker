@@ -12,9 +12,6 @@ Portfolio personnel pour gérer et suivre ses investiments en cryptomonnaie.
 * Docker
 * Docker-compose
 
-
-
-
 ## Personnel ##
 
 Besoin initial : pouvoir stocker les transactions de cryptomonnaies, savoir sur quels sites elles ont été réalisées, avoir son propre tracker/portfolio
