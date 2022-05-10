@@ -9,6 +9,8 @@ use DateTime;
 
 class SavesFixtures extends Fixture
 {
+    // Creacte dummy datas to test graph and push to database
+
     public function load(ObjectManager $manager): void
     {
         $date1 = new DateTime('2022-05-09');

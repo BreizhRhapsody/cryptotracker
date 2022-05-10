@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class AddType extends AbstractType
 {
+    // This form cointains fiels of Crypto entity and allow user to save his transactions
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
