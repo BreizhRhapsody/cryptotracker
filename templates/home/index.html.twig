@@ -76,9 +76,14 @@
 
         <!-- Icons to delete and have more information about the transaction with pop up to confirm -->            
 
-                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('Cette transaction vous a coûté {{ crypto.total }}€ pour {{ crypto.qte }} crypto achetée\(s\) soit un coût unitaire de {{ crypto.value }}€')){return true;}else{event.stopPropagation(); event.preventDefault();};"><em alt="Supprimer" class="fa fa-info-circle ml-3"></em></a>
+                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('Cette transaction vous a coûté {{ crypto.total }}€ pour {{ crypto.qte }} crypto achetée\(s\) soit un coût unitaire de {{ crypto.value }}€')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                    <em alt="Supprimer" class="fa fa-info-circle ml-3"></em>
+                    </a>
                     
-                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('C\'est votre dernier mot ?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><em alt="Supprimer" class="fa fa-trash"></em></a></th>         
+                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('C\'est votre dernier mot ?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                    <em alt="Supprimer" class="fa fa-trash"></em>
+                    </a>
+                    </th>         
                 </tr>
             </thead>
             <tbody>

@@ -16,17 +16,21 @@ class ChartController extends AbstractController
 
     public function index(ChartBuilderInterface $chartBuilder, SaveOfJourneyRepository $repository): Response
     {
+        // Call to the repository of entity SaveOfJourney and get all fields
+
         $saves = $repository->findAll();
         
         $ordinate = [];
         $abscissa = [];
         
+        // Push datas into arrays to reuse it in the chart's creation
 
         foreach ($saves as $save) {
             array_push($ordinate, $save->getDate()->format('d/m/Y'));
             array_push($abscissa, $save->getProfit());
         }
 
+        // Creation of the chart
 
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
         $chart->setData([
@@ -37,17 +41,14 @@ class ChartController extends AbstractController
                     'label' => 'Evolution',
                     'borderColor' => '#1fc36c',
                     'data' => $abscissa,
-
                 ],
             ]
         ]);
 
-
+        // Return data to the chart template
            
         return $this->render('chart/index.html.twig', [
             'chart'=>$chart,
         ]);
-
-
     }
 }
