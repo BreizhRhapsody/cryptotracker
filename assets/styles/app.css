@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Grotesk:wght@600&display=swap);
-/*BASE*/
 
-/*  Titre (bold)/ Autre (regular) : font-family: 'Roboto', sans-serif;
-    Logo : font-family: 'Space Grotesk', sans-serif;
+/* GRAPHIC CHART */
+
+/*  font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 */
 
 /*  black #100f0f
@@ -10,55 +11,68 @@
     green #1fc36c
 */
 
-/*RULES*/
+/* RULES */
 
-body {
-  background-color: #100f0f;
+* {
   color: #efefef;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.4rem;
-  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin: auto;
-  padding: auto;
-  max-width: 600px;
 }
-
-@media screen and (min-width: 750px) {
-  
-  body {
-    background-color:rgb(27, 88, 56);
-  }
-  
-  .body {
-    box-shadow: 0 3px 6px rgba(31, 195, 108, 0.75);
-  }
-
-}
-
-  
-
 
 header {
-    border-bottom: solid 1px #1fc36c;
+  margin-top: 20px;
+  border-bottom: solid 1px #1fc36c;
+  margin-bottom: 30px;
 }
 
-h2, h3 {
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: bold;
+main {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
+div .container {
+  margin-top:50px;
+  max-width: 750px;
+}
+
+h3 {
+  text-align: center;
+  height: 100px;
+}
 
 a {
+  text-decoration: none;  
   color: #efefef;
-  text-decoration: none;
 }
 
 .icon {
   height: 30px;
+
+}
+
+.fa {
+  font-size: 1.8rem;  
+  color: #efefef;
 }
 
 button {
    background-color: #1fc36c;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 750px) {
+  body {
+    background-image: url(../img/bg-img.jpg);
+    background-position: center;
+    background-size: auto;
+  }
+  .container {
+  background-color: rgba(0, 0, 0, 0.945);
+  height: 850px;
+  margin-top: 30px;
+  border-radius: 15px;
+  }
 }

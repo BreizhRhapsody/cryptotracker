@@ -58,6 +58,7 @@ class HomeController extends AbstractController
             'cryptos' => $cryptos,
             'userProfit' => round($userProfit),
             'result' => $result,
+            'actualValue'=> json_encode($actualValue),
         ]);
     }
 

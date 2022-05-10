@@ -8,17 +8,17 @@
 
 {% block body %}
 
-<div class="container body"> 
+<div class="container div-border "> 
 
     <header>
         <div class="row d-flex justify-content-between align-items-center">
             <div class="col">
-                <h1 class="px-3">Crypto Tracker</h1>
+                <h1>Crypto Tracker</h1>
             </div>
             <div class="col link text-right pt-3">
                 <ul class="list-unstyled d-inline-flex align-items-center">
-                    <li><button class="btn btn-success"><em class="fa fa-hourglass-end" onClick="window.location.reload();"></em></button></li>
-                    <li><a href="{{ path('app_add') }}"><em class="fa fa-plus icon px-3 mx-3 "></em></a></li>
+                    <li><button class="btn btn-success mr-3"><em class="fa fa-hourglass-end" onClick="window.location.reload();"></em></button></li>
+                    <li><a href="{{ path('app_add') }}"><em class="fa fa-plus mx-3 pl-3"></em></a></li>
                 </ul>
             </div>
         </div>
@@ -39,14 +39,10 @@
         </div>
     {% endfor %}  
 
-    <main class="container mt-3 p-3">
+    <main class="container-profit">
         <div class="profit">
-            <h3 id="mydesc" class=" text-center mb-3"><a href="{{ path('app_chart') }}" style="text-decoration: none">
-            {% if userProfit > 0 %}
+            <h3 id="mydesc"><a href="{{ path('app_chart') }}" style="text-decoration: none; color: white; font-family:'Space Grotesk', sans-serif">
                 {{ userProfit }} €
-            {% elseif userProfit < 0 %}
-                {{ userProfit }} €
-            {% endif %}
             </a></h3>       
         </div>
 
@@ -59,13 +55,16 @@
                     {% for cryptoName in result|keys %}    
                     {% if cryptoName == crypto.name %}
                         {% if result[cryptoName]['quote']['EUR']['price'] > crypto.value %}
-                            <em class="fa fa-long-arrow-alt-up px-3 mx-3 icon"></em>
+                            <em class="fa fa-long-arrow-alt-up text-success"></em>
                         {% elseif result[cryptoName]['quote']['EUR']['price'] < crypto.value %}
-                            <em class="fa fa-long-arrow-alt-down px-3 mx-3 icon"></em>
+                            <em class="fa fa-long-arrow-alt-down text-danger"></em>
                         {% endif %}
                     {% endif %}
                     {% endfor %}
-                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link"><em alt="Supprimer" class="fa fa-trash"></em></a></th>         
+
+                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('Cette transaction vous a coûté {{ crypto.total }}€ pour {{ crypto.qte }} crypto achetée\(s\) soit un coût unitaire de {{ crypto.value }}€')){return true;}else{event.stopPropagation(); event.preventDefault();};"><em alt="Supprimer" class="fa fa-info-circle ml-3"></em></a>
+                    
+                    <a href="{{ path('delete', {id: crypto.id}) }}" class="card-link confirmation" onclick="if (confirm('C\'est votre dernier mot ?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><em alt="Supprimer" class="fa fa-trash"></em></a></th>         
                 </tr>
             </thead>
             <tbody>

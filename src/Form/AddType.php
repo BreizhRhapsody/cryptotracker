@@ -43,7 +43,7 @@ class AddType extends AbstractType
             ->add('qte', NumberType::class, [
                 'required' => true,
                 'label' => false,
-                'attr' => ['placeholder' => 'Quantité'],
+                'attr' => ['placeholder' => 'Quantité (unitaire)'],
             ])
             ->add('editer', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-success']
